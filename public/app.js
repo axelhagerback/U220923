@@ -5,16 +5,28 @@ var cardDeck = [x, y];
 
 playerCards = [];
 
+drawCardFn = () => {
+    var randomizedCard = (max) => Math.floor(Math.random(cardDeck) * max);
+    var cards = (randomizedCard(4) + ', ' + randomizedCard(13));
+    playerCards.push(cards);
+};
+
+
 startGame = () => {
 
     playerCards = [];
-    var randomizedCard = (max) => Math.floor(Math.random(cardDeck) * max);
     for (i=0; i<2; i++) {
-    var cards = (randomizedCard(4) + ', ' + randomizedCard(13));
-    playerCards.push(cards);
+        drawCardFn();
     }
     console.log(playerCards);
-  
-}
+};
 
 
+hit = () => {
+    drawCardFn();
+    console.log(playerCards);
+};
+
+checkIfTrue = () => {
+    
+};
