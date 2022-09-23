@@ -3,8 +3,18 @@ var y;
 
 var cardDeck = [x, y];
 
-drawCard = () => {
+playerCards = [];
+
+startGame = () => {
+
+    playerCards = [];
     var randomizedCard = (max) => Math.floor(Math.random(cardDeck) * max);
-    console.log(randomizedCard(4) + ', ' + randomizedCard(14));
-    
+    for (i=0; i<2; i++) {
+    var cards = (randomizedCard(4) + ', ' + randomizedCard(13));
+    playerCards.push(cards);
+    }
+    console.log(playerCards);
+  
 }
+
+
