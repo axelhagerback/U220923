@@ -7,6 +7,8 @@ var cardsPlayed = [];
 
 function build() {
    document.getElementById('hit').disabled = true;
+   document.getElementById('yourCards').disabled = true;
+   
 };
 
 startGame = () => {
@@ -16,14 +18,18 @@ startGame = () => {
     var playerTotal = document.getElementById('total');
     playerTotal.innerHTML = '';
    
+    document.getElementById('yourCards').disabled = false;
+    yourCards.innerHTML = 'YOUR CARDS ARE:<br>'
+   
     for (i=0; i<2; i++) {
         drawCardFn();
+        writeCard();
     };
 
     sum();
-    writeCard();
+    
     document.getElementById('hit').disabled = false;
-
+    document.getElementById('startGame').disabled = true;
     
 };
 
@@ -58,7 +64,7 @@ hit = () => {
 
 writeCard = () => {
     var yourCards = document.getElementById('yourCards');
-
+    
     if (cards.color === 0) {
         switch (cards.value) {
             case 10:
@@ -148,7 +154,11 @@ sum = () => {
 
     if (sum == 21) {
         total.innerHTML += ' YOU WIN!';
+        document.getElementById('startGame').disabled = false;
+        document.getElementById('hit').disabled = true;
        } else if (sum > 21) {
         total.innerHTML += ' YOU LOSE, SKILL ISSUE!';
+        document.getElementById('startGame').disabled = false;
+        document.getElementById('hit').disabled = true;
        };
 };
