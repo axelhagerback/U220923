@@ -5,6 +5,11 @@ var cardDeck = [color, value];
 
 var cardsPlayed = [];
 
+build = () => {
+   document.getElementById('hit').disabled = true;
+    
+};
+
 drawCardFn = () => {
     var randomizedCard = (max) => Math.floor(Math.random(cardDeck) * max);
 
@@ -29,14 +34,12 @@ drawCardFn = () => {
 };
 
 includesCard = () =>  {
-
     if (cardsPlayed.includes(`${color} ${value}`)) {
         drawCardFn();
     } else {
         cardsPlayed.push(`${color} ${value}`);
         cardDeck.push(cards);
     };
-
 };
 
 
@@ -50,22 +53,32 @@ startGame = () => {
    
     for (i=0; i<2; i++) {
         drawCardFn();
-        sum();
-    }
-    console.log(cardDeck);
-    
+    };
+
+    sum();
+
+    document.getElementById('hit').disabled = false;
 };
 
 
 hit = () => {
     drawCardFn();
-    console.log(cardDeck);
     sum();
+};
+
+colorName = () => {
+    
 };
 
 sum = () => {
     var playerTotal = document.getElementById('total');
-    playerTotal.innerHTML += (`${color} ${value} <br>`);
 
+    let sum = 0;
+    
+    for (var i=0; i < cardDeck.length; i++){
+        sum += cardDeck[i].value+1;
+    };
+
+    playerTotal.innerHTML = sum;
 };
 
