@@ -74,11 +74,14 @@ sum = () => {
     var playerTotal = document.getElementById('total');
 
     let sum = 0;
-    
+
     for (var i=0; i < cardDeck.length; i++){
+        if (cardDeck[i].value > 9) {
+            sum += 10;
+       } else {
         sum += cardDeck[i].value+1;
+        };
     };
-
     playerTotal.innerHTML = sum;
-};
 
+};
