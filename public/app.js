@@ -1,60 +1,63 @@
-var x;
-var y;
+var color;
+var value;
 
-var cardDeck = [x, y];
+var cardDeck = [color, value];
 
-playerCards = [];
-
-cardInfo = {
-    Color: '',
-    Value: ''
-};
+var cardsPlayed = [];
 
 drawCardFn = () => {
     var randomizedCard = (max) => Math.floor(Math.random(cardDeck) * max);
-    var cards = (`${randomizedCard(4)}, ${randomizedCard(13)}`);
-    playerCards.push(cards);
-    console.table(playerCards);
 
+    color = randomizedCard(4);
+    value = randomizedCard(13);
+    cards = {color, value};
 
-   // cardInfo = {Color: randomizedCard(4), Value: randomizedCard(13)}
-   // playerCards.push(cardInfo);
+    includesCard();
 
+    console.table(cardsPlayed);
+    console.table(cardDeck);
     /*
         problem: hur lägger vi till true/false till kortet
-
-        när kortet hämtas ska den kolla ifall den är true eller false,
-        * är den FALSE så ska kortet pusha in i playerCards och sättas till true
-        * är den TRUE så ska den hämta ett nytt kort, alltså köra if-satsen igen
         
         funktionen ska köras för varje kort som tas eftersom att man inte ska
         kunna starta med likadana kort, vilket är möjligt just nu
 
-        kolla i playerCards om kortet finns
+        kolla i cardDeck om kortet finns
         finns det, skriv inte ut
         finns det inte, skriv ut
-        
-    
-    if (cardDeck[x,y] = false) {
+    */
+};
 
-   }*/
+includesCard = () =>  {
+
+    if (cardsPlayed.includes(`${color} ${value}`)) {
+        drawCardFn();
+    } else {
+        cardsPlayed.push(`${color} ${value}`);
+        cardDeck.push(cards);
+    };
+
 };
 
 
-startGame = () => {
 
-    playerCards = [];
+startGame = () => {
+    cardDeck = [];
+    cardsPlayed = [];
    
     for (i=0; i<2; i++) {
         drawCardFn();
     }
-    console.log(playerCards);
+    console.log(cardDeck);
+    sum();
 };
 
 
 hit = () => {
-
     drawCardFn();
-    console.log(playerCards);
+    console.log(cardDeck);
 };
 
+sum = () => {
+    
+};
