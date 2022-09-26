@@ -5,8 +5,25 @@ var cardDeck = [color, value];
 
 var cardsPlayed = [];
 
-build = () => {
+function build() {
    document.getElementById('hit').disabled = true;
+};
+
+startGame = () => {
+    cardDeck = [];
+    cardsPlayed = [];
+    
+    var playerTotal = document.getElementById('total');
+    playerTotal.innerHTML = '';
+   
+    for (i=0; i<2; i++) {
+        drawCardFn();
+    };
+
+    sum();
+    writeCard();
+    document.getElementById('hit').disabled = false;
+
     
 };
 
@@ -21,16 +38,6 @@ drawCardFn = () => {
 
     console.table(cardsPlayed);
     console.table(cardDeck);
-    /*
-        problem: hur lägger vi till true/false till kortet
-        
-        funktionen ska köras för varje kort som tas eftersom att man inte ska
-        kunna starta med likadana kort, vilket är möjligt just nu
-
-        kolla i cardDeck om kortet finns
-        finns det, skriv inte ut
-        finns det inte, skriv ut
-    */
 };
 
 includesCard = () =>  {
@@ -43,31 +50,86 @@ includesCard = () =>  {
 };
 
 
-
-startGame = () => {
-    cardDeck = [];
-    cardsPlayed = [];
-    
-    var playerTotal = document.getElementById('total');
-    playerTotal.innerHTML = '';
-   
-    for (i=0; i<2; i++) {
-        drawCardFn();
-    };
-
-    sum();
-
-    document.getElementById('hit').disabled = false;
-};
-
-
 hit = () => {
     drawCardFn();
     sum();
+    writeCard();
 };
 
-colorName = () => {
-    
+writeCard = () => {
+    var yourCards = document.getElementById('yourCards');
+
+    if (cards.color === 0) {
+        switch (cards.value) {
+            case 10:
+                yourCards.innerHTML += 'Jack of Hearts<br>';
+                break;
+            case 11:
+                yourCards.innerHTML += 'Queen of Hearts<br>';
+                break;
+            case 12:
+                yourCards.innerHTML += 'King of Hearts<br>';
+                break;
+            case 0:
+                yourCards.innerHTML += 'Ace of Hearts<br>';
+                break;
+            default: yourCards.innerHTML += (`${value+1} of Hearts<br>`)
+    };
+    };
+
+    if (cards.color === 1) {
+        switch (cards.value) {
+            case 10:
+                yourCards.innerHTML += 'Jack of Diamonds<br>';
+                break;
+            case 11:
+                yourCards.innerHTML += 'Queen of Diamonds<br>';
+                break;
+            case 12:
+                yourCards.innerHTML += 'King of Diamonds<br>';
+                break;
+            case 0:
+                yourCards.innerHTML += 'Ace of Diamonds<br>';
+                break;
+            default: yourCards.innerHTML += (`${value+1} of Diamonds<br>`)
+    };
+    };
+
+    if (cards.color === 2) {
+        switch (cards.value) {
+            case 10:
+                yourCards.innerHTML += 'Jack of Spades<br>';
+                break;
+            case 11:
+                yourCards.innerHTML += 'Queen of Spades<br>';
+                break;
+            case 12:
+                yourCards.innerHTML += 'King of Spades<br>';
+                break;
+            case 0:
+                yourCards.innerHTML += 'Ace of Spades<br>';
+                break;
+            default: yourCards.innerHTML += (`${value+1} of Spades<br>`)
+    };
+    };
+
+    if (cards.color === 3) {
+        switch (cards.value) {
+            case 10:
+                yourCards.innerHTML += 'Jack of Clubs<br>';
+                break;
+            case 11:
+                yourCards.innerHTML += 'Queen of Clubs<br>';
+                break;
+            case 12:
+                yourCards.innerHTML += 'King of Clubs<br>';
+                break;
+            case 0:
+                yourCards.innerHTML += 'Ace of Clubs<br>';
+                break;
+            default: yourCards.innerHTML += (`${value+1} of Clubs<br>`)
+    };
+    };
 };
 
 sum = () => {
@@ -84,4 +146,9 @@ sum = () => {
     };
     playerTotal.innerHTML = sum;
 
+    if (sum == 21) {
+        total.innerHTML += ' YOU WIN!';
+       } else if (sum > 21) {
+        total.innerHTML += ' YOU LOSE, SKILL ISSUE!';
+       };
 };
