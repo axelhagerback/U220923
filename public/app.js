@@ -44,20 +44,28 @@ includesCard = () =>  {
 startGame = () => {
     cardDeck = [];
     cardsPlayed = [];
+    
+    var playerTotal = document.getElementById('total');
+    playerTotal.innerHTML = '';
    
     for (i=0; i<2; i++) {
         drawCardFn();
+        sum();
     }
     console.log(cardDeck);
-    sum();
+    
 };
 
 
 hit = () => {
     drawCardFn();
     console.log(cardDeck);
+    sum();
 };
 
 sum = () => {
-    
+    var playerTotal = document.getElementById('total');
+    playerTotal.innerHTML += (`${color} ${value} <br>`);
+
 };
+
