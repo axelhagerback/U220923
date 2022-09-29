@@ -11,15 +11,23 @@
 <body onload=build()>
     <div id="main">
         <button type="button" id="startGame" onclick=startGame()>Start a new game</button>
-
+        <button type="button" id="firstCards" onclick=firstCards()>Draw Cards</button>
         <button type="button" id="hit" onclick=hit()>Hit</button>
+        <button type="button" id="stay" onclick=stay()>Stay</button>
 
-        <div id="result">
-        <p id="total"></p>
-        <p id="yourCards">
-        </div>
+    <div id="container">
 
-
+            <div id="result">
+            <p id="total"></p>
+            <p id="yourCards"></p>
+            </div>
+        
+            <div id="computer">
+            <p id="computerTotal"></p>
+            <p id="computerCards"></p>
+            </div>
+        
     </div>
+</div>  
 </body>
 </html>
